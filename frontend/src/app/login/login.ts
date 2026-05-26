@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
-import { AccountService } from '../account'; 
-import { Router } from '@angular/router'; // YÖNLENDİRME (ROUTER) MOTORU EKLENDİ
+import { AccountService } from '../account';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-login',
@@ -12,13 +12,12 @@ import { Router } from '@angular/router'; // YÖNLENDİRME (ROUTER) MOTORU EKLEN
   styleUrl: './login.css'
 })
 export class LoginComponent {
-  
+
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required)
   });
 
-  // Kuryemizin yanına bir de Şoför (Router) ekledik
   constructor(private accountService: AccountService, private router: Router) {}
 
   onSubmit() {
@@ -27,13 +26,13 @@ export class LoginComponent {
       
       console.log("Giriş Bilgileri:", this.loginForm.value);
 
-      // HOCANIN İSTEDİĞİ CİNSİYETE GÖRE YÖNLENDİRME İŞ KURALI
-      if (girilenEmail && girilenEmail.includes('kadin')) {
-        // E-postada 'kadin' geçiyorsa Kadın sayfasına git
-        this.router.navigate(['/kadin']);
+      // HOCANIN İSTEDİĞİ YENİ KURAL: ROL BAZLI YÖNLENDİRME (AŞAMA 4)
+      if (girilenEmail && girilenEmail.includes('admin')) {
+        // E-postada 'admin' varsa Yetkili say ve Yönetim Paneline yolla
+        this.router.navigate(['/admin']);
       } else {
-        // Geçmiyorsa Erkek sayfasına git
-        this.router.navigate(['/erkek']);
+        // Yoksa Normal Kullanıcı say ve Blog Sayfasına yolla
+        this.router.navigate(['/home']);
       }
 
     } else {
