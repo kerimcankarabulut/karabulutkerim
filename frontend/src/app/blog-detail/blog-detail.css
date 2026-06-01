@@ -1,0 +1,168 @@
+.detail-container {
+    background: linear-gradient(135deg, #720026, #3a0013, #0b132b, #720026);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- GERİ DÖN BUTONU --- */
+.back-link-btn {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #0b132b;
+    border: 2px solid #d4af37;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.back-icon {
+    font-size: 28px;
+    color: #d4af37;
+    font-weight: bold;
+    margin-bottom: 4px;
+    transition: all 0.3s ease;
+}
+
+.tooltip-text-right {
+    position: absolute;
+    left: 75px;
+    background-color: #d4af37;
+    color: #0b132b;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-20px);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.tooltip-text-right::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -6px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent #d4af37 transparent transparent;
+}
+
+.back-link-btn:hover {
+    transform: scale(1.1);
+    border-color: #fff;
+    background-color: #d4af37;
+}
+
+.back-link-btn:hover .back-icon {
+    color: #0b132b;
+}
+
+.back-link-btn:hover .tooltip-text-right {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* --- BLOG DETAY KARTI --- */
+.blog-detail-card {
+    background-color: rgba(11, 19, 43, 0.85);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-top: 5px solid #d4af37;
+    border-radius: 15px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    max-width: 900px;
+    padding: 50px;
+    color: white;
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.detail-header {
+    border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.detail-header h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', sans-serif;
+    color: #ffffff;
+    font-size: 36px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.meta-info {
+    color: #d4af37;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.detail-body {
+    line-height: 1.8;
+    font-size: 18px;
+    color: #e2e8f0;
+    white-space: pre-line; /* Django'dan gelen paragrafları bozmadan satır altlarına geçirir */
+}
+
+.error-card {
+    text-align: center;
+    background-color: rgba(11, 19, 43, 0.85);
+    padding: 50px;
+    border-radius: 15px;
+    border: 1px solid #d4af37;
+    color: white;
+}
+
+.social-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    background-color: #0b132b;
+    color: #d4af37;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    transition: all 0.4s ease;
+    border: 1px solid #d4af37;
+}
+
+.social-btn:hover {
+    background-color: #720026;
+    color: #ffffff;
+    border-color: #720026;
+    transform: translateY(-3px);
+    box-shadow: 0 0 22px rgba(114, 0, 38, 0.7);
+}

@@ -1,1 +1,41 @@
-<p>home works!</p>
+<div *ngIf="!veriHazir" class="home-container" style="min-height: 100vh;"></div>
+
+<div class="home-container" *ngIf="veriHazir">
+  <div class="toast-notification" [class.show]="mesajGonderildi">
+    <div class="toast-icon">✓</div>
+    <div class="toast-content">
+      <strong>Başarılı!</strong>
+      <p>Mesajınız iletildi, en kısa sürede dönüş yapacağım.</p>
+    </div>
+  </div>
+
+  <a routerLink="/about" class="profile-link-btn">
+    <span class="tooltip-text">Hakkımda</span>
+    <img *ngIf="fullImageUrl" [src]="fullImageUrl" alt="Profil" class="nav-avatar">
+  </a>
+
+  <div class="header-section">
+    <h1>Kerimcan Karabulut Blog Vitrini</h1>
+  </div>
+  
+  <div class="blog-list">
+    <div *ngFor="let blog of bloglar" class="profile-card blog-card">
+      <h2>{{ blog.title }}</h2>
+      <p class="meta-info">Kategori: {{ blog.category ? blog.category : 'Genel' }} | Tarih: {{ blog.created_at ? (blog.created_at | date:'dd MMM yyyy') : '31 May 2026' }}</p>
+      <p class="content-excerpt">
+        {{ blog.text_content ? (blog.text_content | slice:0:250) + '...' : 'Bu blog yazısı için içerik önizlemesi bulunmuyor...' }}
+      </p>
+      <a [routerLink]="['/blog', blog.id]" class="social-btn read-more-btn">Devamını Oku &rarr;</a>
+    </div>
+
+    <div class="profile-card blog-card contact-card">
+      <h2>İletişime Geç</h2>
+      <form (ngSubmit)="mesajGonder()" ngNativeValidate>
+        <input type="text" name="isim" [(ngModel)]="iletisimData.isim" placeholder="İsim Soyisim" required>
+        <input type="email" name="email" [(ngModel)]="iletisimData.email" placeholder="E-posta Adresi (ör: test@test.com)" required>
+        <textarea name="mesaj" [(ngModel)]="iletisimData.mesaj" rows="4" placeholder="Mesajınız..." required></textarea>
+        <button type="submit" class="read-more-btn submit-btn">Gönder</button>
+      </form>
+    </div>
+  </div>
+</div>

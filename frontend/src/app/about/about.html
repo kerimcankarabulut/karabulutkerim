@@ -1,51 +1,32 @@
-<div style="max-width: 500px; margin: 40px auto; font-family: Arial, sans-serif; background: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-  <h2 style="text-align: center; color: #333;">Hakkımda Yönetimi</h2>
+<div *ngIf="!veriHazir" class="about-container" style="display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #ffd700;">
+</div>
 
-  <div style="margin-bottom: 25px; text-align: center;">
-    <img *ngIf="secilenFotograf" [src]="secilenFotograf" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; border: 3px solid #007bff;">
-    
-    <div *ngIf="!secilenFotograf" style="width: 150px; height: 150px; border-radius: 50%; background-color: #ddd; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #777; border: 3px dashed #bbb;">
-      Fotoğraf Yok
+<div class="about-container" *ngIf="veriHazir">
+  
+  <a routerLink="/" class="home-link-btn">
+    <div class="home-icon">🏠</div>
+    <span class="tooltip-text-right">Blog Vitrini</span>
+  </a>
+
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="profile-avatar">
+        <img *ngIf="fullImageUrl" [src]="fullImageUrl" alt="Profil" class="avatar-img">
+      </div>
+      <h1>{{ hakkimda?.isim_soyisim }}</h1>
+      <p class="title">{{ hakkimda?.meslek }} | {{ hakkimda?.yas }}, {{ hakkimda?.sehir }}</p>
     </div>
-    
-    <input type="file" (change)="fotografYukle($event)" accept="image/*" style="display: block; margin: 0 auto;">
+
+    <div class="profile-body">
+      <div class="about-section">
+        <h3>Hakkımda</h3>
+        <p>{{ hakkimda?.aciklama }}</p>
+      </div>
+
+      <div class="social-links">
+        <a [href]="hakkimda?.linkedin_url" target="_blank" class="social-btn">LinkedIn</a>
+        <a [href]="hakkimda?.github_url" target="_blank" class="social-btn">GitHub</a>
+      </div>
+    </div>
   </div>
-
-  <form [formGroup]="aboutForm" (ngSubmit)="kaydet()">
-    
-    <div style="margin-bottom: 15px;">
-      <label style="display: block; margin-bottom: 5px; font-weight: bold;">İsim:</label>
-      <input type="text" formControlName="isim" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
-    </div>
-
-    <div style="margin-bottom: 15px;">
-      <label style="display: block; margin-bottom: 5px; font-weight: bold;">Yaş:</label>
-      <input type="text" formControlName="yas" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
-    </div>
-
-    <div style="margin-bottom: 15px;">
-      <label style="display: block; margin-bottom: 5px; font-weight: bold;">Şehir:</label>
-      <input type="text" formControlName="sehir" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
-    </div>
-
-    <div style="margin-bottom: 15px;">
-      <label style="display: block; margin-bottom: 5px; font-weight: bold;">Meslek / Bölüm:</label>
-      <input type="text" formControlName="meslek" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
-    </div>
-
-    <div style="margin-bottom: 15px;">
-      <label style="display: block; margin-bottom: 5px; font-weight: bold;">LinkedIn Linki:</label>
-      <input type="text" formControlName="linkedin" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
-    </div>
-
-    <div style="margin-bottom: 25px;">
-      <label style="display: block; margin-bottom: 5px; font-weight: bold;">GitHub Linki:</label>
-      <input type="text" formControlName="github" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
-    </div>
-
-    <button type="submit" style="width: 100%; padding: 12px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold;">
-      Bilgileri Güncelle
-    </button>
-
-  </form>
 </div>

@@ -1,0 +1,196 @@
+.about-container {
+    background: linear-gradient(135deg, #720026, #3a0013, #0b132b, #720026);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.profile-card {
+    background-color: rgba(11, 19, 43, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 700px;
+    overflow: hidden;
+    transition: transform 0.4s ease;
+}
+
+.profile-card:hover {
+    transform: scale(1.03);
+}
+
+.profile-header {
+    background-color: rgba(11, 19, 43, 0.9);
+    color: #ffffff;
+    padding: 50px 20px 35px;
+    text-align: center;
+    position: relative;
+    border-bottom: 4px solid #d4af37;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    border: 4px solid #d4af37;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.profile-avatar:hover {
+    animation: pulseAvatar 1.5s infinite;
+}
+
+@keyframes pulseAvatar {
+    0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+}
+
+.profile-header h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+.profile-header .title {
+    color: #d4af37;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.profile-body {
+    padding: 40px 35px;
+}
+
+.about-section h3 {
+    color: #ffffff;
+    border-bottom: 2px solid #d4af37;
+    padding-bottom: 12px;
+    margin-top: 0;
+    margin-bottom: 18px;
+    font-size: 20px;
+}
+
+.about-section p {
+    color: #cbd5e1;
+    line-height: 1.8;
+    font-size: 16px;
+    margin-bottom: 35px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.social-btn {
+    padding: 12px 30px;
+    background-color: #0b132b;
+    color: #d4af37;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    transition: all 0.4s ease;
+    border: 1px solid #d4af37;
+}
+
+.social-btn:hover {
+    background-color: #720026;
+    color: #ffffff;
+    border-color: #720026;
+    transform: translateY(-3px);
+    box-shadow: 0 0 22px rgba(114, 0, 38, 0.7), 0 6px 16px rgba(114, 0, 38, 0.4);
+}
+
+.home-link-btn {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #0b132b;
+    border: 2px solid #d4af37;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.home-icon {
+    font-size: 24px;
+    position: relative;
+    z-index: 2;
+}
+
+.tooltip-text-right {
+    position: absolute;
+    left: 75px;
+    background-color: #d4af37;
+    color: #0b132b;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-20px);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.tooltip-text-right::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -6px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent #d4af37 transparent transparent;
+}
+
+.home-link-btn:hover {
+    transform: scale(1.1);
+    border-color: #fff;
+    background-color: #d4af37;
+}
+
+.home-link-btn:hover .tooltip-text-right {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}

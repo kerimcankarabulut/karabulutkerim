@@ -1,13 +1,10 @@
 from rest_framework import serializers
-from .models import Category, Content
-from django.contrib.auth import get_user_model
+from .models import Hakkimda, Category, Content, Iletisim
 
-User = get_user_model()
-
-class UserSerializer(serializers.ModelSerializer):
+class HakkimdaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ['id', 'username', 'is_author', 'yas', 'sehir', 'meslek', 'linkedin_url', 'github_url', 'aciklama', 'fotograf']
+        model = Hakkimda
+        fields = '__all__'
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,6 +12,13 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ContentSerializer(serializers.ModelSerializer):
+    category = serializers.StringRelatedField()
+
     class Meta:
         model = Content
+        fields = '__all__'
+
+class IletisimSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Iletisim
         fields = '__all__'
